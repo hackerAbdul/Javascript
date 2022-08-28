@@ -15,6 +15,8 @@ var string = "This is a string";
 
 var integer = 1;
 
+console.log(typeof(integer));
+
 //lets create a variable and re-initialise that variable
 
 let dreamCar = "Mercedes";
@@ -33,10 +35,10 @@ console.log(Name);
 
 //Print off a boolean
 
-console.log(true);
+console.log("this"=="this");
+console.log(1==1);
 
 //Create an undefine variable and print it off
-
 var nothing;
 
 console.log(nothing);
