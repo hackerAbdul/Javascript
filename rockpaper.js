@@ -1,29 +1,34 @@
 function computer(){
     const choice = ["rock", "paper", "scissors"]
     var generator = Math.floor(Math.random()*3)
-    //console.log(generator)
+    
     return choice[generator]
 }
 
 function user(){
     const choice = ["rock", "paper", "scissors"]
     var generator = Math.floor(Math.random()*3)
-    //console.log(generator)
+    
     return choice[generator]
 }
 
+
+
 var playerChoice = user();
 var computerChoice = computer();
+
+console.log("this is outside the function " + playerChoice)
+console.log("this is outside the function " + computerChoice)
 
 play(computerChoice,playerChoice)
 
 function play(computerMove,playerMove){
     
-    var computer = computerMove.toLowerCase()
-    var player = playerMove.toLowerCase()
+    var computer = computerMove
+    var player = playerMove
 
-    console.log(`Player has choses: ${playerMove}`)
-    console.log(`Computer has choses: ${computerMove}`)
+    console.log(`Player has chosen: ${playerMove}`)
+    console.log(`Computer has chosen: ${computerMove}`)
 
     if (computer === "rock" && player === "rock"){
         console.log("Its a tie")
@@ -39,4 +44,6 @@ function play(computerMove,playerMove){
         console.log("Sorry I do not understand that")
     }
 }
+
+
 
