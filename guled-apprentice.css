@@ -1,0 +1,47 @@
+.wireframe{
+    width: 375px;
+    background-color: #89c82e;
+    border: 5px solid #3c3c3b;
+    border-radius: 25px;
+    font-size: 14px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body{
+    text-align: center;
+}
+
+form{
+    height: 150px;
+}
+
+input{
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 55%;
+}
+
+.name{
+    margin-top: 15px;
+}
+
+.email{
+    margin-left: 10px;
+}
+
+.credit{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.button{
+    margin-top: 10px;
+    border: none;
+    background-color: #e70064;
+    border-radius: 3px;
+    color: #3c3c3b;
+    text-align: center;
+    font-size: 14px;
+    margin: 4px 2px;
+    width: 20%;
+}
