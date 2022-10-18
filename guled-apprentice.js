@@ -1,6 +1,6 @@
 const nameEl = document.getElementById('name');
 const emailEl = document.getElementById('email');
-const cardEl = document.getElementById('card')
+const cardEl = document.getElementById('card');
 
 const form = document.querySelector('#signup');
 
@@ -48,17 +48,23 @@ const checkEmail = () => {
 const checkCard = () => {
     let valid = false
     const card = cardEl.value.trim();
+    const min = 16,
+        max = 16;
     console.log(card)
     if (!isRequired(card)) {
         showError(cardEl, 'Card cannot be blank.');
         cardEl.style.borderColor = 'pink'
     }else if(!isNumber(card)){
-        showError(cardEl, 'Cannot have string in credit Card')
+        showError(cardEl, 'Card cannot have string')
+        cardEl.style.borderColor = 'pink'
+    }else if (!isBetween(card.length, min, max)) {
+        showError(cardEl, `Card must have 16 digits`)
         cardEl.style.borderColor = 'pink'
     }else {
         showSuccess(cardEl);
         cardEl.style.borderColor = 'green'
         valid = true;
+        encryptCard(card);
     }
     return valid;
 }
@@ -81,12 +87,34 @@ const isNumber = (card) => {
     return re.test(card)
 }
 
+const encryptCard = (number) =>{
+
+    const arrOfStrs = Array.from(String(number));
+
+    const arrOfNums = arrOfStrs.map((str) => Number(str));
+    console.log(arrOfNums)
+    const encrypted = arrOfNums.map(function(currentNumber, index) {
+        if (index % 2 !== 0) {
+            return currentNumber * 2;
+        } else {
+            return currentNumber;
+        }
+    })
+    const arr = encrypted
+    const luhnAlgorithm = (arr.toString()).replaceAll(',','');
+    alert(`That has all been submitted thank you :) with card stored as ${luhnAlgorithm}`)
+
+    return luhnAlgorithm;
+}
+
 const showError = (input, message) => {
     // get the form-field element
     const formField = input.parentElement;
     // add the error class
     formField.classList.remove('success');
     formField.classList.add('error');
+    form.style.height = '175px'
+    form.style.width = '390px'
 
     // show the error message
     const error = formField.querySelector('small');
@@ -114,9 +142,10 @@ form.addEventListener('submit', function (e) {
 
     // validate forms
     let isUsernameValid = checkUsername(),
-        isEmailValid = checkEmail()
+        isEmailValid = checkEmail(),
+        isCardValid = checkCard()
 
-    let isFormValid = isUsernameValid && isEmailValid
+    let isFormValid = isUsernameValid && isEmailValid && isCardValid
 
     // submit to the server if the form is valid
     if (isFormValid) {
